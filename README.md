@@ -1,7 +1,7 @@
 # Todo App
 
-A powerful, intention-driven todo app designed to help you attract your goals and manifest abundance through aligned action.
-This one is built around the idea that what you write, you act on — and what you act on, you become.
+What you write, you act on, and what you act on, you become.
+
 
 ## Features
 - Create, edit, and delete todos

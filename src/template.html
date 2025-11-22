@@ -7,14 +7,31 @@
 </head>
 <body>
     <header class="header">
-        <H1>Manifest By Doing</H1>
+        <H2>Manifest By Doing</H2>
     </header>
     <div class="main">
-        <div class="sidebar"></div>
-        <div class="content"></div>
+        <div class="sidebar">
+            <h3>Projects</h3>
+            <div class="projects">
+                <div class="project-item">Default Project</div>
+            </div>
+            <button id="add-project">New project</button>
+        </div>
+        <div class="content">
+            <h3 id="current-project">Default Project</h3>
+            <button id="add-todo">New Todo</button>
+            <div class="todos">
+                <div class="todo-item meduim">
+                    <input type="checkbox">
+                    <span class="todo-title">Create a new project</span>
+                    <Span class="due-date">Today</Span>
+                    <button class="todo-delete">X</button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    
+
 
 </body>
 </html>
