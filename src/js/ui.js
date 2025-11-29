@@ -30,7 +30,7 @@ function setupAddProjBtn() {
 function setupRemoveProjBtn() {
   const container = document.querySelector(".projects");
   container.addEventListener("click", (e) => {
-    if (e.target.classList.contains(".project-delete")) {
+    if (e.target.classList.contains("project-delete")) {
       const id = e.target.dataset.id; // CHECK WHEN DELETED PROJECT IS ACTIVE
       projectManager.deleteProject(id);
       renderProjects(projectManager.getProjects());
@@ -41,7 +41,7 @@ function setupRemoveProjBtn() {
 function setupRemoveTodo() {
   const container = document.querySelector(".todos");
   container.addEventListener("click", (e) => {
-    if (e.target.classList.contains(".todo-delete")) {
+    if (e.target.classList.contains("todo-delete")) {
       const id = e.target.dataset.id;
       const activeProject = projectManager.getActiveProject();
       activeProject.removeTodo(id);
