@@ -13,6 +13,8 @@ function renderTodos(todos) {
     const todoContainer = document.createElement("div");
     todoContainer.classList.add("todo-item");
 
+    if (element.completed) todoContainer.classList.add("complete");
+
     const checkbox = document.createElement("input");
     checkbox.setAttribute("type", "checkbox");
     checkbox.setAttribute("data-id", element.id);
@@ -20,6 +22,11 @@ function renderTodos(todos) {
     const title = document.createElement("span");
     title.classList.add("todo-title");
     title.textContent = element.title;
+
+    if (element.completed) {
+      checkbox.checked = true;
+      title.classList.add("complete");
+    }
 
     const dueDate = document.createElement("span");
     dueDate.classList.add("due-date");

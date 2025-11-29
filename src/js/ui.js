@@ -1,5 +1,6 @@
 import { renderProjects, renderTodos } from "./dom";
 import { projectManager } from "./projectManager";
+import { Todo } from "./todo";
 
 export { initUI };
 
@@ -92,13 +93,20 @@ function switchProject() {
 
 function setupCheckboxes() {
   const container = document.querySelector(".todos");
-  container.addEventListener("click", (e) => {
+  container.addEventListener("change", (e) => {
     if (!e.target.matches("input[type='checkbox']")) return;
-    else {
-      const item = e.target.closest(".todo-item");
-      if (e.target.checked) item.classList.add("complete");
-      else item.classList.remove("complete");
+
+    const item = e.target.closest(".todo-item");
+    const currentTodo = projectManager
+      .getActiveProject()
+      .todos.find((todo) => todo.id === e.target.dataset.id);
+
+    if (e.target.checked) {
+      item.classList.add("complete");
+    } else {
+      item.classList.remove("complete");
     }
+    currentTodo.toggleCompleted();
   });
 }
 
