@@ -266,3 +266,7 @@ textarea {
   background-color: #6fe38d;
   cursor: pointer;
 }
+
+.todo-item.complete .todo-title {
+  text-decoration: line-through;
+}

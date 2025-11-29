@@ -90,6 +90,18 @@ function switchProject() {
   });
 }
 
+function setupCheckboxes() {
+  const container = document.querySelector(".todos");
+  container.addEventListener("click", (e) => {
+    if (!e.target.matches("input[type='checkbox']")) return;
+    else {
+      const item = e.target.closest(".todo-item");
+      if (e.target.checked) item.classList.add("complete");
+      else item.classList.remove("complete");
+    }
+  });
+}
+
 function initUI() {
   setupAddProjBtn();
   setupAddTodoBtn();
@@ -97,4 +109,5 @@ function initUI() {
   setupRemoveProjBtn();
   setupRemoveTodo();
   switchProject();
+  setupCheckboxes();
 }
