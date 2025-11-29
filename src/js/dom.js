@@ -61,13 +61,15 @@ function renderProjects(projects) {
     name.classList.add("project-name");
     name.textContent = project.name;
 
-    const btn = document.createElement("button");
-    btn.classList.add("project-delete");
-    btn.setAttribute("data-id", project.id);
-    btn.textContent = "X";
-
     item.appendChild(name);
-    item.appendChild(btn);
+
+    if (project.name !== "Default Project") {
+      const btn = document.createElement("button");
+      btn.classList.add("project-delete");
+      btn.setAttribute("data-id", project.id);
+      btn.textContent = "X";
+      item.appendChild(btn);
+    }
 
     container.appendChild(item);
   });
