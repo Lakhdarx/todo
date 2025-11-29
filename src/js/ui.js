@@ -26,14 +26,15 @@ function setupAddProjBtn() {
     renderProjects(projectManager.getProjects());
   });
 }
-// REVISIT
+
 function setupRemoveProjBtn() {
   const container = document.querySelector(".projects");
   container.addEventListener("click", (e) => {
     if (e.target.classList.contains("project-delete")) {
-      const id = e.target.dataset.id; // CHECK WHEN DELETED PROJECT IS ACTIVE
+      const id = e.target.dataset.id;
       projectManager.deleteProject(id);
       renderProjects(projectManager.getProjects());
+      renderTodos(projectManager.getActiveProject().todos);
     }
   });
 }
@@ -74,15 +75,18 @@ function setupTodoForm() {
 
 function switchProject() {
   document.querySelector(".projects").addEventListener("click", (e) => {
-    if (e.target.classList.contains("project-item")) {
-      const id = e.target.lastElementChild.dataset.id;
-      projectManager.setActiveProject(id);
+    const item = e.target.closest(".project-item");
+    if (!item) return;
 
-      const currentProj = projectManager.getActiveProject();
-      document.querySelector("#current-project").textContent = currentProj.name;
+    if (e.target.classList.contains("project-delete")) return;
 
-      renderTodos(currentProj.todos);
-    }
+    const id =
+      item.querySelector(".project-delete")?.dataset.id ||
+      projectManager.getProjects()[0].id;
+
+    projectManager.setActiveProject(id);
+
+    renderTodos(projectManager.getActiveProject().todos);
   });
 }
 

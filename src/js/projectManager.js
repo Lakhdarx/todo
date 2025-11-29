@@ -1,4 +1,5 @@
 export { projectManager };
+import { renderProjects } from "./dom";
 import { Project } from "./project";
 
 const projectManager = (function () {
@@ -22,12 +23,17 @@ const projectManager = (function () {
   }
 
   function deleteProject(id) {
-    const index = projects.findIndex((project) => project.id === id);
+    const project = projects.find((project) => project.id === id);
+    if (!project || project.name === "Default Project") return;
+    const index = projects.indexOf(project);
+
+    if (project === getActiveProject()) setActiveProject(defaultProject.id);
     projects.splice(index, 1);
   }
 
   function setActiveProject(id) {
-    activeProject = projects.find((project) => project.id === id);
+    const proj = projects.find((p) => p.id === id);
+    if (proj) activeProject = proj;
   }
 
   return {

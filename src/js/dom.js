@@ -1,7 +1,11 @@
 import { format } from "date-fns";
+import { projectManager } from "./projectManager";
 export { renderProjects, renderTodos };
 
 function renderTodos(todos) {
+  document.querySelector("#current-project").textContent =
+    projectManager.getActiveProject().name;
+
   const container = document.querySelector(".todos");
   container.textContent = "";
 
