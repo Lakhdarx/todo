@@ -4,6 +4,11 @@ import { Project } from "./project";
 const projectManager = (function () {
   let projects = [];
   let defaultProject = new Project("Default Project");
+
+  document // assigns ID to the delete button of default project
+    .querySelector("#default-delete")
+    .setAttribute("data-id", defaultProject.id);
+
   let activeProject = defaultProject;
   projects.push(defaultProject);
 
