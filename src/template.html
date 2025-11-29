@@ -13,7 +13,10 @@
       <div class="sidebar">
         <h3>Projects</h3>
         <div class="projects">
-          <div class="project-item">Default Project</div>
+          <div class="project-item">
+            <span class="project-name">Default Project</span>
+            <button class="project-delete">X</button>
+          </div>
         </div>
         <button id="add-project">New project</button>
       </div>
@@ -21,7 +24,7 @@
         <h3 id="current-project">Default Project</h3>
         <button id="add-todo">New Todo</button>
         <div class="todos">
-          <div class="todo-item meduim">
+          <div class="todo-item medium">
             <input type="checkbox" />
             <span class="todo-title">Create a new project</span>
             <span class="due-date">Today</span>
@@ -34,21 +37,22 @@
     <div class="modal">
       <div class="modal-content">
         <h4>New Todo</h4>
-        <form method="get">
-          <input type="text" name="title" placeholder="Title" />
-          <input type="text" name="description" placeholder="Description" />
-          <input type="date" name="due-date" />
-          <select name="priority">
+        <form method="get" id="add-todo-form">
+          <input type="text" id="title" placeholder="Title" required />
+          <input type="text" id="description" placeholder="Description" />
+          <input type="date" id="due-date" required />
+          <select id="priority" required>
             <option value="low">Low</option>
             <option value="medium">Medium</option>
             <option value="high">High</option>
           </select>
           <textarea
-            name="notes"
+            id="notes"
             cols="30"
             rows="6"
             placeholder="Notes"
           ></textarea>
+          <button type="submit" id="form-add">Add</button>
         </form>
       </div>
     </div>
