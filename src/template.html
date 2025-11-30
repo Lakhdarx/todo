@@ -18,14 +18,7 @@
       <div class="content">
         <h3 id="current-project">Default Project</h3>
         <button id="add-todo">New Todo</button>
-        <div class="todos">
-          <!-- <div class="todo-item medium">
-            <input type="checkbox" />
-            <span class="todo-title">Create a new project</span>
-            <span class="due-date">Today</span>
-            <button class="todo-delete">X</button>
-          </div> -->
-        </div>
+        <div class="todos"></div>
       </div>
     </div>
 
@@ -33,6 +26,8 @@
       <div class="modal-content">
         <h4>New Todo</h4>
         <form method="get" id="add-todo-form">
+          <input type="hidden" id="editing-id" value="" />
+
           <input type="text" id="title" placeholder="Title" required />
           <input type="text" id="description" placeholder="Description" />
           <input type="date" id="due-date" required />
