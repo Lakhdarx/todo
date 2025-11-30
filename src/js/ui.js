@@ -1,6 +1,6 @@
 import { renderProjects, renderTodos } from "./dom";
 import { projectManager } from "./projectManager";
-import { Todo } from "./todo";
+// import { Todo } from "./todo";
 
 export { initUI };
 
@@ -23,6 +23,7 @@ function setupAddProjBtn() {
   const addProjBtn = document.querySelector("#add-project");
   addProjBtn.addEventListener("click", () => {
     const name = prompt("Enter new project name");
+    if (!name) return;
     projectManager.addProject(name);
     renderProjects(projectManager.getProjects());
   });
