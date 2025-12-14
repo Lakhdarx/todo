@@ -7,6 +7,7 @@ function setupAddTodoBtn() {
   const addBtn = document.querySelector("#add-todo");
   const modal = document.querySelector(".modal");
   const form = document.querySelector("#add-todo-form");
+  const editingId = document.querySelector("#editing-id");
 
   addBtn.addEventListener("click", () => {
     modal.classList.add("show");
@@ -15,6 +16,7 @@ function setupAddTodoBtn() {
   modal.addEventListener("click", (e) => {
     if (e.target === modal) {
       modal.classList.remove("show");
+      editingId.value = "";
       form.reset();
     }
   });
@@ -71,7 +73,10 @@ function setupTodoForm() {
 
     const currentProj = projectManager.getActiveProject();
 
-    if (editingId) currentProj.removeTodo(editingId);
+    if (editingId) {
+      currentProj.removeTodo(editingId);
+      document.querySelector("#editing-id").value = "";
+    }
 
     currentProj.addTodo(title, description, dueDate, priority, notes);
 

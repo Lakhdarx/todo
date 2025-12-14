@@ -1,6 +1,7 @@
 # Todo App
 
 What you write, you act on, and what you act on, you become.
+
 Part of Odin's project curriculum: https://www.theodinproject.com/lessons/node-path-javascript-todo-list
 
 ## Features
