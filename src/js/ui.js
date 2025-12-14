@@ -1,5 +1,6 @@
 import { renderProjects, renderTodos } from "./dom";
 import { projectManager } from "./projectManager";
+import { saveToStorage } from "./storage";
 
 export { initUI };
 
@@ -28,6 +29,7 @@ function setupAddProjBtn() {
     const name = prompt("Enter new project name");
     if (!name) return;
     projectManager.addProject(name);
+    saveToStorage();
     renderProjects(projectManager.getProjects());
   });
 }
@@ -38,6 +40,7 @@ function setupRemoveProjBtn() {
     if (e.target.classList.contains("project-delete")) {
       const id = e.target.dataset.id;
       projectManager.deleteProject(id);
+      saveToStorage();
       renderProjects(projectManager.getProjects());
       renderTodos(projectManager.getActiveProject().todos);
     }
@@ -51,6 +54,7 @@ function setupRemoveTodo() {
       const id = e.target.dataset.id;
       const activeProject = projectManager.getActiveProject();
       activeProject.removeTodo(id);
+      saveToStorage();
       renderTodos(activeProject.todos);
     }
   });
@@ -79,6 +83,8 @@ function setupTodoForm() {
     }
 
     currentProj.addTodo(title, description, dueDate, priority, notes);
+
+    saveToStorage();
 
     renderTodos(projectManager.getActiveProject().todos);
     modal.classList.remove("show");
@@ -145,6 +151,8 @@ function switchProject() {
 
     projectManager.setActiveProject(id);
 
+    saveToStorage();
+
     renderTodos(projectManager.getActiveProject().todos);
   });
 }
@@ -165,6 +173,8 @@ function setupCheckboxes() {
       item.classList.remove("complete");
     }
     currentTodo.toggleCompleted();
+
+    saveToStorage();
   });
 }
 

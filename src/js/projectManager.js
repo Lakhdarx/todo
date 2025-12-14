@@ -1,5 +1,4 @@
 export { projectManager };
-import { renderProjects } from "./dom";
 import { Project } from "./project";
 
 const projectManager = (function () {
@@ -36,11 +35,16 @@ const projectManager = (function () {
     if (proj) activeProject = proj;
   }
 
+  function deleteAllProjects() {
+    projects.length = 0;
+  }
+
   return {
     addProject,
     deleteProject,
     getActiveProject,
     getProjects,
     setActiveProject,
+    deleteAllProjects,
   };
 })();
